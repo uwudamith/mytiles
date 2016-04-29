@@ -1,0 +1,55 @@
+html, body, .container-table {
+    height: 100%;
+}
+.container-table {
+    display: table;
+}
+.vertical-center-row {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+body, table, td, th {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 300;
+    text-decoration: none;
+    text-shadow: none;
+    text-transform: none;
+    text-align: left;
+    letter-spacing: 0;
+    line-height: 1.4;
+    word-spacing: 0;
+}
+
+body{
+	color: #333;
+    background-color: #EEE;
+    background-image: url(../images/noise.png);
+}
+
+.login-area{
+	background-color:rgba(128,128,128,0.3);
+	margin: 0 auto;
+	padding: 15px;
+}
+
+.error-area{
+	background-color:rgba(128,128,128,0.3);
+	margin: 0 auto;
+}
+
+.error-area ul
+{
+	list-style-type: none;
+}
+
+h2{
+font-size: 1.5em;	
+}
+
+.login-area .title{
+	display: table;
+	margin: 0 auto;
+}
