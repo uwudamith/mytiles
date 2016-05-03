@@ -12,6 +12,6 @@ public class MainController {
 	      model.addAttribute("title", "Login");
 	      model.addAttribute("message", "Enter your username/password:");
 	      return "loginPage";
-	  }
+	  }  
 	  
 }
