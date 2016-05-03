@@ -18,33 +18,22 @@ import com.my.tiles.forms.LoginForm;
 import com.my.tiles.validator.LoginValidator;
 
 /**
- * Handles requests for the application home page.
+ * Handles requests for the application login.
  */
 @Controller
 public class LoginController {
 
 	private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
 
-	/**
-	 * Simply selects the home view to render by returning its name.
-	 */
-	@RequestMapping(value = "/test", method = RequestMethod.GET)
-	public String login(Locale locale, Model model) {
-
-		logger.info("Welcome home! The client locale is {}.", locale);
-
-		LoginForm loginForm = new LoginForm();
-		model.addAttribute("loginForm", loginForm);
-		return "login";
-	}
-
-	@RequestMapping(value = "/loginrr", method = RequestMethod.GET)
-	public String loginView(Locale locale, Model model) {
-
-		LoginForm loginForm = new LoginForm();
-		model.addAttribute("loginForm", loginForm);
-		return "login";
-	}
+	@RequestMapping(value = { "/", "/login" }, method = RequestMethod.GET)
+	  public String loginPage(Locale locale,Model model) {
+		
+		logger.info("Client locale is :"+locale);
+		
+	      model.addAttribute("title", "Login");
+	      model.addAttribute("message", "Enter your username/password:");
+	      return "loginPage";
+	  }
 	
 	@RequestMapping(value = "/logingg", method = RequestMethod.POST)
 	public String executeLogin(HttpServletRequest request, HttpServletResponse response,

@@ -20,12 +20,7 @@ public class MainController {
 	      return "adminPage";
 	  }
 	 
-	 @RequestMapping(value = { "/", "/login" }, method = RequestMethod.GET)
-	  public String loginPage(Model model) {
-	      model.addAttribute("title", "Login");
-	      model.addAttribute("message", "Enter your username/password:");
-	      return "loginPage";
-	  }
+	 
 	 
 	 @RequestMapping(value = "/userInfo", method = RequestMethod.GET)
 	  public String loginPage(Locale locale,Model model, Principal principal) {
