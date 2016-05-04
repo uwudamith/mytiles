@@ -11,21 +11,29 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">My Book</a>
+          <a class="navbar-brand" href="<spring:url value="${contextPath}/"></spring:url>">My Book</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
+          <security:authorize access="isAuthenticated()">
+            <li class="${current == 'home' ?'active':'' }"><a href="<spring:url value="${contextPath}/"></spring:url>">Home</a></li>
+            </security:authorize>
+           <security:authorize access="isAuthenticated()">
+            <li class="${current == 'timeline' ?'active':'' }"><a href="<spring:url value="${contextPath}/timeline"></spring:url>">Timeline</a></li>
+            </security:authorize>
+            <security:authorize access="isAuthenticated()">
+           		<li class="${current == 'event' ?'active':'' }"><a href="<spring:url value="${contextPath}/event" ></spring:url>">Events</a></li>
+          	</security:authorize>
              <security:authorize access="hasRole('ROLE_ADMIN')">
-            	<li><a href="${contextPath}/admin">Admin</a></li>
+            	<li><a href="<spring:url value="${contextPath}/admin" ></spring:url>">Admin</a></li>
             </security:authorize>
           </ul>
           <ul class="nav navbar-nav navbar-right">
           <security:authorize access="isAuthenticated()">
-           	<li><a href="${contextPath}/logout">Logout</a></li>
+           	<li><a href="<spring:url value="${contextPath}/logout"></spring:url>">Logout</a></li>
           </security:authorize>
           <security:authorize access="! isAuthenticated()">
-           	<li><a href="${contextPath}/login">Login</a></li>
+           	<li><a href=" <spring:url value="${contextPath}/login"></spring:url>">Login</a></li>
           </security:authorize>
            
           </ul>

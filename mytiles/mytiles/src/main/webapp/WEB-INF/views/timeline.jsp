@@ -7,7 +7,7 @@
 <head>
 <master:meta></master:meta>
 <header:header></header:header>
-<title>${title}</title>
+<title>Time line</title>
 </head>
 <body>
 	<header:nav></header:nav>

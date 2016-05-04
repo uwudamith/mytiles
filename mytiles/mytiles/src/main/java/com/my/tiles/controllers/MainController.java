@@ -7,7 +7,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class MainController {
-	@RequestMapping(value = { "/", "/login" }, method = RequestMethod.GET)
+	@RequestMapping(value = {"/"}, method = RequestMethod.GET)
+	  public String home(Model model) {
+		model.addAttribute("current", "home");
+	      return "home";
+	  }  
+	@RequestMapping(value = {"/login" }, method = RequestMethod.GET)
 	  public String loginPage(Model model) {
 	      model.addAttribute("title", "Login");
 	      model.addAttribute("message", "Enter your username/password:");

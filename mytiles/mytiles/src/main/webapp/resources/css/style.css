@@ -383,19 +383,35 @@ p.footer {
 
 /* End of bootstrap timeline*/
 
-@media (min-width: 992px) and (max-width: 1199px) {
-
-}
-
-@media (min-width: 768px) and (max-width: 991px) {
-
-}
-@media only screen and (max-width: 320px) {
-
-  .error-code h1{
-	font-size:100px;
+.event-count{
+	font-size: 50px;
 	font-weight: bold;
-  }
 }
+
+.panel-form{
+	padding: 40px;
+}
+
+
+@media ( min-width : 992px) and (max-width: 1199px) {
+	.event-count {
+		font-size: 95%;
+	}
+}
+
+@media ( min-width : 768px) and (max-width: 991px) {
+	.event-count {
+		font-size: 90%;
+	}
+}
+
+@media only screen and (max-width: 320px) {
+.event-count {
+		font-size: 80%;
+	}
+	.error-code h1 {
+		font-size: 100px;
+		font-weight: bold;
+	}}
 
 }
