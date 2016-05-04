@@ -63,7 +63,7 @@
 		<beans:property name="jpaProperties">
 			<beans:props>
 				<beans:prop key="hibernate.show_sql">true</beans:prop>
-				<beans:prop key="hibernate.hbm2ddl.auto">create</beans:prop>
+				<beans:prop key="hibernate.hbm2ddl.auto">update</beans:prop>
 			</beans:props>
 		</beans:property>
 		<beans:property name="persistenceProvider">
@@ -79,7 +79,7 @@
 	</beans:bean>
 	<jpa:repositories base-package="com.my.tiles.repository" />
 	
-	<beans:bean id="eventService" class="com.my.tiles.service.EventService"></beans:bean>
+	<beans:bean id="eventService" class="com.my.tiles.service.impl.DefaultEventService"></beans:bean>
 
 	
 </beans:beans>

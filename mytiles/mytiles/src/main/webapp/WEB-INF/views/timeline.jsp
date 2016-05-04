@@ -3,6 +3,7 @@
 <%@ taglib prefix="footer" tagdir="/WEB-INF/tags/footer"%>
 <%@ taglib prefix="header" tagdir="/WEB-INF/tags/header"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
 <master:meta></master:meta>
@@ -14,127 +15,39 @@
 	<div class="container">
 		<div class="content">
 			<ul class="timeline">
-				<li>
+			 <c:forEach items="${events}" var="event" varStatus="loop">
+			 <c:set var="inverted" value="t" scope="request"></c:set>
+			<c:choose>
+				<c:when test="${loop.count eq 1 }">
+					<c:set var="inverted" value="tt" scope="request"></c:set>
+				</c:when>
+				<c:when test="${loop.count % 2 eq 0}">
+					<c:set var="inverted" value="timeline-inverted" scope="request"></c:set>
+				</c:when>
+				<c:otherwise>
+					<c:set var="inverted" value="" scope="request"></c:set>
+				</c:otherwise>
+			</c:choose>
+				
+				<li class="${inverted}">
 					<div class="timeline-badge">
 						<a><i class="fa fa-circle" id=""></i></a>
 					</div>
 					<div class="timeline-panel">
 						<div class="timeline-heading">
-							<h4>Timeline Event</h4>
+							<h4>${event.title}</h4>
 						</div>
 						<div class="timeline-body">
-							<p>Invitamus me testatur sed quod non dum animae tuae
-								lacrimis ut libertatem deum rogus aegritudinis causet. Dicens
-								hoc contra serpentibus isto.</p>
+							<p>${event.description}</p>
 						</div>
 						<div class="timeline-footer">
-							<p class="text-right">Feb-21-2014</p>
+							<p class="text-right">${event.date}</p>
 						</div>
 					</div>
 				</li>
+			
+			</c:forEach>
 
-				<li class="timeline-inverted">
-					<div class="timeline-badge">
-						<a><i class="fa fa-circle invert" id=""></i></a>
-					</div>
-					<div class="timeline-panel">
-						<div class="timeline-heading">
-							<h4>Timeline Event</h4>
-						</div>
-						<div class="timeline-body">
-							<p>Stranguillione in deinde cepit roseo commendavit patris
-								super color est se sed. Virginis plus plorantes abscederem
-								assignato ipsum ait regem Ardalio nos filiae Hellenicus mihi
-								cum. Theophilo litore in lucem in modo invenit quasi nomen magni
-								ergo est se est Apollonius, habet clementiae venit ad nomine sed
-								dominum depressit filia navem.</p>
-						</div>
-						<div class="timeline-footer">
-							<p class="text-right">Feb-23-2014</p>
-						</div>
-					</div>
-				</li>
-
-				<li>
-					<div class="timeline-badge">
-						<a><i class="fa fa-circle" id=""></i></a>
-					</div>
-					<div class="timeline-panel">
-						<div class="timeline-heading">
-							<h4>Timeline Event</h4>
-						</div>
-						<div class="timeline-body">
-							<p>Advenientibus aliorum eam ad per te sed. Facere debetur
-								aut veneris accedens.</p>
-						</div>
-						<div class="timeline-footer">
-							<p class="text-right">Feb-23-2014</p>
-						</div>
-					</div>
-				</li>
-
-				<li class="timeline-inverted">
-					<div class="timeline-badge">
-						<a><i class="fa fa-circle invert" id=""></i></a>
-					</div>
-					<div class="timeline-panel">
-						<div class="timeline-heading">
-							<h4>Timeline Event</h4>
-						</div>
-						<div class="timeline-body">
-							<p>Volvitur ingreditur id ait mea vero cum autem quod ait
-								Cumque ego illum vero cum unde beata. Commendavi si non dum est
-								in. Dionysiadem tuos ratio puella ut casus, tunc lacrimas
-								effunditis magister cives Tharsis. Puellae addita verbaque'
-								capellam sanctissima quid, apollinem existimas filiam rex cum
-								autem quod tamen adnuente rediens eam est se in. Peracta licet
-								ad nomine Maria non ait in modo compungi mulierem volutpat.</p>
-						</div>
-						<div class="timeline-footer">
-							<p class="text-right">Feb-27-2014</p>
-						</div>
-					</div>
-				</li>
-
-				<li>
-					<div class="timeline-badge">
-						<a><i class="fa fa-circle" id=""></i></a>
-					</div>
-					<div class="timeline-panel">
-						<div class="timeline-heading">
-							<h4>Timeline Event</h4>
-						</div>
-						<div class="timeline-body">
-							<p>Adfertur guttae sapientiae ducitur est Apollonius ut a a
-								his domino Lycoridem in lucem. Theophile atque bona dei cenam
-								veniebant est cum. Iusto opes mihi Tyrum in modo compungi
-								mulierem ubi augue eiusdem ordo quos vero diam omni catervis
-								famulorum. Bene dictis ut diem finito servis unde.</p>
-						</div>
-						<div class="timeline-footer">
-							<p class="text-right">Mar-01-2014</p>
-						</div>
-					</div>
-				</li>
-
-				<li class="timeline-inverted">
-					<div class="timeline-badge">
-						<a><i class="fa fa-circle invert" id=""></i></a>
-					</div>
-					<div class="timeline-panel">
-						<div class="timeline-heading">
-							<h4>Timeline Event</h4>
-						</div>
-						<div class="timeline-body">
-							<p>Crede respiciens loco dedit beneficio ad suis alteri si
-								puella eius in. Acceptis codicello lenonem in deinde plectrum
-								anni ipsa quod eam est Apollonius.</p>
-						</div>
-						<div class="timeline-footer primary">
-							<p class="text-right">Mar-02-2014</p>
-						</div>
-					</div>
-				</li>
 				<li class="clearfix no-float"></li>
 			</ul>
 

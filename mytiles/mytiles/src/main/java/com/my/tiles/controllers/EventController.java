@@ -25,6 +25,7 @@ public class EventController {
 	@RequestMapping(value = "/timeline", method = RequestMethod.GET)
 	  public String loginPage(Locale locale,Model model, Principal principal) {
 			model.addAttribute("current", "timeline");
+			model.addAttribute("events", eventService.getAllEvents());
 	      return "timeline";
 	  }
 	
