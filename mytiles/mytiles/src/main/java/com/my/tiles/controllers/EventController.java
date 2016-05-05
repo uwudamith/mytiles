@@ -23,7 +23,7 @@ public class EventController {
 	EventService eventService;
 	
 	@RequestMapping(value = "/timeline", method = RequestMethod.GET)
-	  public String loginPage(Locale locale,Model model, Principal principal) {
+	  public String timeline(Locale locale,Model model, Principal principal) {
 			model.addAttribute("current", "timeline");
 			model.addAttribute("events", eventService.getAllEvents());
 	      return "timeline";
@@ -36,9 +36,16 @@ public class EventController {
 		return "event";
 	}
 	
+	@RequestMapping("/timelineItems")
+	public String timelineItems(Model model) {
+		model.addAttribute("events", eventService.getAllEvents());
+		return "partial/timeline_items";
+	}
+	
 	@RequestMapping(value = "/event", method = RequestMethod.POST)
 	public String doAddEvent(Model model,@Valid @ModelAttribute("event") EventForm event, BindingResult result,Principal principal) {
 		if(result.hasErrors()){
+			model.addAttribute("current", "event");
 			return "event";
 		}
 

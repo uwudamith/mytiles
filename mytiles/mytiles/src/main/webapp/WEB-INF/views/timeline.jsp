@@ -4,6 +4,7 @@
 <%@ taglib prefix="header" tagdir="/WEB-INF/tags/header"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <html>
 <head>
 <master:meta></master:meta>
@@ -14,42 +15,55 @@
 	<header:nav></header:nav>
 	<div class="container">
 		<div class="content">
-			<ul class="timeline">
-			 <c:forEach items="${events}" var="event" varStatus="loop">
-			 <c:set var="inverted" value="t" scope="request"></c:set>
-			<c:choose>
-				<c:when test="${loop.count eq 1 }">
-					<c:set var="inverted" value="tt" scope="request"></c:set>
-				</c:when>
-				<c:when test="${loop.count % 2 eq 0}">
-					<c:set var="inverted" value="timeline-inverted" scope="request"></c:set>
-				</c:when>
-				<c:otherwise>
-					<c:set var="inverted" value="" scope="request"></c:set>
-				</c:otherwise>
-			</c:choose>
-				
-				<li class="${inverted}">
-					<div class="timeline-badge">
-						<a><i class="fa fa-circle" id=""></i></a>
-					</div>
-					<div class="timeline-panel">
-						<div class="timeline-heading">
-							<h4>${event.title}</h4>
-						</div>
-						<div class="timeline-body">
-							<p>${event.description}</p>
-						</div>
-						<div class="timeline-footer">
-							<p class="text-right">${event.date}</p>
-						</div>
-					</div>
-				</li>
-			
-			</c:forEach>
+			<div class="col-lg-3">
+				<div class="panel panel-default">
+					<div class="panel-heading">Event Types</div>
+					<div class="panel-body">
+						<div class="list-group">
+							<form role="form">
+								<div class="checkbox">
+									<label><input type="checkbox">Birthday Events</label>
+								</div>
+								<div class="checkbox">
+									<label><input type="checkbox">Parties</label>
+								</div>
+								<div class="checkbox">
+									<label><input type="checkbox">Weddings</label>
+								</div>
+								<div class="checkbox">
+									<label><input type="checkbox">Meetings</label>
+								</div>
+								<div class="checkbox">
+									<label><input type="checkbox">Funerals</label>
+								</div>
+							</form>
 
-				<li class="clearfix no-float"></li>
-			</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-9">
+
+				<div class="panel panel-default">
+					<div class="panel-heading">Past Events</div>
+					<div class="panel-body">
+						<div id="jobs-container">
+							<c:forEach items="${events}" var="event" varStatus="loop">
+								<div class="panel panel-default">
+									<div class="panel-body">
+										<h4>${event.title}</h4>
+										<p>${event.description}</p>
+									</div>
+								</div>
+
+							</c:forEach>
+						</div>
+
+
+					</div>
+				</div>
+
+			</div>
 
 		</div>
 
