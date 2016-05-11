@@ -7,6 +7,7 @@
 <%@ taglib prefix="global" tagdir="/WEB-INF/tags/global"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 
 <%@ page session="false"%>
 <master:root />
@@ -47,6 +48,7 @@
 								</div>
 							</c:if>
 							<form name='f' action="j_spring_security_check" method='POST'>
+							<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 								<div class="form-group">
 									<div class="input-group">
 										<span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span> <input
@@ -70,7 +72,7 @@
 								<div class="checkbox">
 									<input type="submit" name="submit" class="btn btn-primary"
 										value="<spring:message code="login.page.submit" />"> <label>
-										<input type="checkbox" /> <spring:message
+										<input type="checkbox" name="remember-me" /> <spring:message
 											code="login.page.remember.me" />
 									</label>
 								</div>

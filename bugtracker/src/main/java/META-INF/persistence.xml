@@ -3,5 +3,6 @@
 	<persistence-unit name="com.bug.tracker">
 	<class>com.bug.tracker.entity.User</class>
 	<class>com.bug.tracker.entity.Role</class>
+	<class>com.bug.tracker.entity.PersistentLogins</class>
 	</persistence-unit>
 </persistence>

@@ -30,12 +30,18 @@
       <logout logout-url="/logout" logout-success-url="/login?logout=true"
           delete-cookies="JSESSIONID" invalidate-session="true" />
  
+   <!-- enable remember me -->
+    <remember-me 
+        token-validity-seconds="1209600"
+	remember-me-parameter="remember-me" 
+	data-source-ref="bugTrackerDataSource" user-service-ref="userDetailsService"/>
+ 
   </http>
  
   <authentication-manager>
   
       <authentication-provider>
-          <user-service>
+          <user-service  id="userDetailsService">
               <user name="user1" password="12345" authorities="ROLE_USER" />
               <user name="admin1" password="12345" authorities="ROLE_USER, ROLE_ADMIN" />
           </user-service>
