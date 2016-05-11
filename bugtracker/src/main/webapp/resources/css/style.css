@@ -180,22 +180,6 @@ line-height: 90px;
 
 
 /* Bootstrap timeline*/
-
-
-h2 {
-    margin-bottom: 30px;
-    color: #4679bd;
-    font-weight: 400;
-    text-align: center;
-}
-
-p.footer {
-    margin-bottom: 20px;
-    color: #999999;
-    font-size: 18px;
-    text-align: center;
-}
-
 /* -----------------------------------------------
  * Timeline
  * --------------------------------------------- */
@@ -406,7 +390,7 @@ p.footer {
 }
 .panel-default > .panel-heading-green{
   background-image: none;
-  background-color:#1abc9c;
+  background-color:#5fba7d;
   /* background-color: #f07c4a; */
   color: #ffffff;
 }
@@ -429,6 +413,36 @@ p.footer {
   color: #ffffff;
 }
 /* End custom panel-heading colors */
+
+.bug-new{
+	background-image: none !important;
+  	background-color:#FF3C21 !important;
+  	color: #ffffff !important;
+  	padding:5px !important;
+  	text-align: center;
+}
+.bug-current{
+	background-image: none !important;
+  	background-color:#FF9500 !important;
+  	color: #ffffff !important;
+  	  	padding:5px !important;
+  	text-align: center;
+}
+.bug-fixed{
+	background-image: none !important;
+  	background-color:#00D16D !important;
+  	color: #ffffff !important;
+  	  	padding:5px !important;
+  	text-align: center;
+}
+.bug-duplicate{
+	background-image: none !important;
+  	background-color:#E3E1DE !important;
+  	color: #5A6A73 !important;
+  	  	padding:5px !important;
+  	text-align: center;
+}
+
 @media ( min-width : 992px) and (max-width: 1199px) {
 	.event-count {
 		font-size: 95%;
