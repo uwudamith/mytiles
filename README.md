@@ -1,4 +1,4 @@
-# MyBook
+# BugTracker
 
 This is Spring MVC project and following technologies are associated with the project
 <ul>
