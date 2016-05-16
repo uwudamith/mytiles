@@ -41,7 +41,7 @@
   <authentication-manager>
   
       <authentication-provider>
-          <user-service  id="userDetailsService">
+          <user-service >
               <user name="user1" password="12345" authorities="ROLE_USER" />
               <user name="admin1" password="12345" authorities="ROLE_USER, ROLE_ADMIN" />
           </user-service>
@@ -50,7 +50,7 @@
       <!-- authentication from database -->
       <authentication-provider>
       <password-encoder hash="bcrypt"></password-encoder>
-         <jdbc-user-service data-source-ref="bugTrackerDataSource"
+         <jdbc-user-service data-source-ref="bugTrackerDataSource" id="userDetailsService"
 				authorities-by-username-query="select tbl_users.username, tbl_user_role.name from tbl_users
 			join tbl_users_tbl_user_role on tbl_users.id = tbl_users_tbl_user_role.users_id
 			join tbl_user_role on tbl_user_role.id = tbl_users_tbl_user_role.roles_id

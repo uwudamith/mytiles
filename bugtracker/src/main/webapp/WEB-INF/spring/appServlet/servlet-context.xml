@@ -48,13 +48,11 @@
             class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
             <beans:property name="paramName" value="lang" />
         </beans:bean>
-        
-        <!-- <interceptor>
+        <interceptor>
             <mapping path="/" />
              <mapping path="/login" />
-              <mapping path="/userInfo" />
-            <beans:bean class="com.my.tiles.interceptors.TimingInterceptor"></beans:bean>
-        </interceptor> -->
+            <beans:bean class="com.bug.tracker.interceptors.TimingInterceptor" />
+        </interceptor>
     </interceptors>
     <beans:bean id="emf"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
