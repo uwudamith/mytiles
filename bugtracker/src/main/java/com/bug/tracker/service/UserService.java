@@ -4,4 +4,5 @@ import com.bug.tracker.entity.User;
 
 public interface UserService {
 	public void save(User user);
+	User findByusername(String username);
 }

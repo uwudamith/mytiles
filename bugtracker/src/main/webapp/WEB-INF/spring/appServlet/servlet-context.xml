@@ -85,6 +85,12 @@
 	<beans:bean id="roleService"
 		class="com.bug.tracker.service.impl.DefaultRoleService">
 	</beans:bean>
+	<beans:bean id="issueService"
+		class="com.bug.tracker.service.impl.DefaultIssueService">
+	</beans:bean>
+	<beans:bean id="projectService"
+		class="com.bug.tracker.service.impl.DefaultProjectService">
+	</beans:bean>
 
 
 	<beans:bean id="applicationInitializer" class="com.bug.tracker.init.ApplicationInitializer" init-method="init"></beans:bean>

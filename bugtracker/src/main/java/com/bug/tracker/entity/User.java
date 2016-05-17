@@ -2,8 +2,10 @@ package com.bug.tracker.entity;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
@@ -18,6 +20,7 @@ public class User {
 
 	@Id
 	@GeneratedValue
+	@Column(name="id")
 	private int id;
 	
 	@Column(unique=true)
@@ -29,6 +32,47 @@ public class User {
 	@ManyToMany
 	@JoinTable
 	private List<Role> roles;
+	
+	private String name;
+	private String email;
+
+	@OneToMany(cascade=CascadeType.ALL, mappedBy="assignedTo",fetch=FetchType.LAZY)
+	private List<Issue> issue;
+	
+	@ManyToMany(mappedBy="assignedUser")
+	private List<Project> assignedProject;
+	
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public List<Issue> getIssue() {
+		return issue;
+	}
+
+	public void setIssue(List<Issue> issue) {
+		this.issue = issue;
+	}
+
+	public List<Project> getAssignedProject() {
+		return assignedProject;
+	}
+
+	public void setAssignedProject(List<Project> assignedProject) {
+		this.assignedProject = assignedProject;
+	}
 
 	public int getId() {
 		return id;

@@ -4,5 +4,6 @@
 	<class>com.bug.tracker.entity.User</class>
 	<class>com.bug.tracker.entity.Role</class>
 	<class>com.bug.tracker.entity.PersistentLogins</class>
+	<class>com.bug.tracker.entity.Issue</class>
 	</persistence-unit>
 </persistence>
