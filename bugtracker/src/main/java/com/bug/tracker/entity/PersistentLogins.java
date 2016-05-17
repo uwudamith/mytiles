@@ -9,8 +9,6 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
-import net.sourceforge.jtds.jdbc.DateTime;
-
 import javax.persistence.Id;
 
 @Entity
