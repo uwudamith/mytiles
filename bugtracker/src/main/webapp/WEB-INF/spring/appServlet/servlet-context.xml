@@ -96,5 +96,6 @@
 
 	<beans:bean id="applicationInitializer" class="com.bug.tracker.init.ApplicationInitializer"
 		init-method="init"></beans:bean>
-
+<beans:bean id="validator"
+      class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean"/>
 </beans:beans>

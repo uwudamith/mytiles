@@ -281,6 +281,13 @@ line-height: 90px;
   color: #f2ebeb;
 }
 
+.val-erros span{
+	color: #e74c3c;
+	font-size: 12px;
+	padding-top: 2px;
+	margin-top:10px;
+	margin-left: 5px;
+}
 @media ( min-width : 992px) and (max-width: 1199px) {
 	.event-count {
 		font-size: 95%;

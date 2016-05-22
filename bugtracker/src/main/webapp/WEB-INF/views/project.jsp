@@ -43,10 +43,15 @@
 									<div class="form-group">
 										<label for="name" class="col-sm-4 control-label">Name</label>
 										<div class="col-sm-8">
-										<form:hidden path="id" id="hdnId" />
+											<form:hidden path="id" id="hdnId" />
 											<form:input path="name" cssClass="form-control"
-												id="txtTitle" placeholder="Name" />
-											<form:errors path="name"></form:errors>
+												id="txtName" placeholder="Name" />
+												<!-- Display error message -->
+												<div class="val-erros">
+													<form:errors path="name"></form:errors>
+												</div>
+												
+											
 										</div>
 									</div>
 									<div class="form-group">

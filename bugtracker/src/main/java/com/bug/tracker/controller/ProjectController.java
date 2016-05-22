@@ -1,8 +1,11 @@
 package com.bug.tracker.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -28,7 +31,11 @@ public class ProjectController {
 	}
 	
 	@RequestMapping(value = "/project", method = RequestMethod.POST)
-	public String insertOrUpdate(@ModelAttribute("projectForm") ProjectForm projectForm, ModelMap model) {
+	public String insertOrUpdate(@Valid @ModelAttribute("projectForm") ProjectForm projectForm, BindingResult bindingResult,ModelMap model) {
+		if (bindingResult.hasErrors()) {
+            return "project";
+        }
+		
 		Populator<ProjectForm, Project> map =new Populator<ProjectForm, Project>();
 		Project pj = map.convert(projectForm, new Project());
 		projectService.save(pj);

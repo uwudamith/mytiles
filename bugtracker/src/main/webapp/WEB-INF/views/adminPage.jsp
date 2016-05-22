@@ -45,9 +45,9 @@
 														<td class="f-500 c-cyan">${project.id}</td>
 														<td>${project.name}</td>
 														<td class="f-500 c-cyan"><fmt:formatDate
-																pattern="yyyy-MM-dd" value="${project.startDate}" /></td>
+																pattern="MM/dd/yyyy" value="${project.startDate}" /></td>
 														<td class="f-500 c-cyan"><fmt:formatDate
-																pattern="yyyy-MM-dd" value="${project.targetEndDate}" /></td>
+																pattern="MM/dd/yyyy" value="${project.targetEndDate}" /></td>
 													</tr>
 												</c:forEach>
 											</tbody>

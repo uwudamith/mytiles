@@ -2,11 +2,25 @@ package com.bug.tracker.forms;
 
 import java.util.Date;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class ProjectForm {
 	private int id;
+	
+	@NotNull
+	@Size(min=2,message="Project name must contain at least 2 letters")
 	private String name;
+	
+	@DateTimeFormat(pattern = "MM/dd/yyyy")
 	private Date startDate;
+	
+	@DateTimeFormat(pattern = "MM/dd/yyyy")
 	private Date targetEndDate;
+	
+	@DateTimeFormat(pattern = "MM/dd/yyyy")
 	private Date actualEndDate;
 	public int getId() {
 		return id;
