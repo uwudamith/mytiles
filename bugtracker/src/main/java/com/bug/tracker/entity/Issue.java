@@ -32,8 +32,8 @@ public class Issue {
 	@ManyToOne
 	@JoinColumn(name="assigned_user_id", nullable=false)
 	private User assignedTo;
-	private int status;
-	private int priority;
+	private String status;
+	private String priority;
 	private Date targetResolutionDate;
 	private String progress;
 	private Date actualResolutionDate;
@@ -98,19 +98,19 @@ public class Issue {
 		this.assignedTo = assignedTo;
 	}
 
-	public int getStatus() {
+	public String getStatus() {
 		return status;
 	}
 
-	public void setStatus(int status) {
+	public void setStatus(String status) {
 		this.status = status;
 	}
 
-	public int getPriority() {
+	public String getPriority() {
 		return priority;
 	}
 
-	public void setPriority(int priority) {
+	public void setPriority(String priority) {
 		this.priority = priority;
 	}
 

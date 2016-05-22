@@ -5,4 +5,3 @@
 <script src="${contextPath}/resources/js/bootstrap-datepicker.min.js"></script>
 <script src="${contextPath}/resources/js/jquery.waypoints.min.js"></script>
 <script src="${contextPath}/resources/js/init.js"></script>
-<%-- <script src="${contextPath}/resources/js/myBook.timeline.js"></script> --%>

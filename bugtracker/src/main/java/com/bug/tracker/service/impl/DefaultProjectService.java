@@ -1,5 +1,7 @@
 package com.bug.tracker.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +23,11 @@ public class DefaultProjectService implements ProjectService {
 	@Override
 	public void save(Project project) {
 		projectRepository.save(project);		
+	}
+
+	@Override
+	public List<Project> findAll() {
+		return projectRepository.findAll();
 	}
 
 }

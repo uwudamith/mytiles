@@ -44,7 +44,11 @@
 		<error-code>400</error-code>
 		<location>/400</location>
 	</error-page>
-
+	
+	<error-page>
+		<error-code>405</error-code>
+		<location>/405</location>
+	</error-page>
 	<error-page>
 		<error-code>404</error-code>
 		<location>/404</location>

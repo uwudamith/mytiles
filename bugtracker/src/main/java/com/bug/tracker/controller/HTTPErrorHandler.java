@@ -14,20 +14,26 @@ public class HTTPErrorHandler {
 	
 	@RequestMapping(value="/400")
 	 public String error400(){
-	  System.out.println("custom error handler");
+	  System.out.println("400 custom error handler");
 	  return path+"/400";
 	 }
 	  
 	 @RequestMapping(value="/404")
 	 public String error404(){
-	  System.out.println("custom error handler");
+	  System.out.println("404 custom error handler");
 	  return path+"/404";
 	 }
 	  
 	 @RequestMapping(value="/500")
 	 public String error500(){
-	  System.out.println("custom error handler");
+	  System.out.println("500 custom error handler");
 	  return path+"/500";
+	 }
+	 
+	 @RequestMapping(value="/405")
+	 public String error405(){
+	  System.out.println("405 custom error handler");
+	  return path+"/405";
 	 }
 	 
 	 @RequestMapping(value = "/403", method = RequestMethod.GET)

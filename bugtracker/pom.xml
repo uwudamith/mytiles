@@ -198,7 +198,13 @@
 			<artifactId>spring-data-jpa</artifactId>
 			<version>1.2.0.RELEASE</version>
 		</dependency>
-       
+		
+		<!-- Model mapper -->
+		<dependency>
+			<groupId>org.modelmapper</groupId>
+			<artifactId>modelmapper</artifactId>
+			<version>0.7.5</version>
+		</dependency>
 	</dependencies>
     <build>
         <plugins>

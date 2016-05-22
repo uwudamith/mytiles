@@ -25,8 +25,8 @@
 			<div class="col-lg-3"></div>
 			<div class="col-lg-6">
 				<div class="login-area">
-					<div class="panel panel-default">
-						<div class="panel-heading">
+					<div class="panel panel-default ">
+						<div class="panel-heading panel-heading-blue">
 							<spring:message code="login.page.header" />
 						</div>
 						<div class="panel-body">

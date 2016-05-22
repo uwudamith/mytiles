@@ -5,7 +5,7 @@ $(document).ready(function() {
 		$('.input-group.date').datepicker({});
 	}
 
-	$(window).scroll(function() {
+/*	$(window).scroll(function() {
 	    if($(window).scrollTop() == $(document).height() - $(window).height()) {
 	    	$.ajax({
 				url: "/timelineItems",
@@ -16,7 +16,7 @@ $(document).ready(function() {
 				}
 			});
 	    }
-	});
+	});*/
 	
 	
 	

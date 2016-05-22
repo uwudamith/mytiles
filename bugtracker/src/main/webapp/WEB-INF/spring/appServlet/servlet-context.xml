@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans:beans xmlns="http://www.springframework.org/schema/mvc"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:beans="http://www.springframework.org/schema/beans"
 	xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
-	xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc" xmlns:jpa="http://www.springframework.org/schema/data/jpa"
 	xmlns:tx="http://www.springframework.org/schema/tx"
 	xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.2.xsd
 		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
@@ -13,8 +11,9 @@
 		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa-1.2.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.2.xsd">
 
-	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
-	
+	<!-- DispatcherServlet Context: defines this servlet's request-processing 
+		infrastructure -->
+
 	<!-- Enables the Spring MVC @Controller programming model -->
 	<annotation-driven />
 
@@ -22,39 +21,42 @@
 
 	<jdbc:embedded-database type="HSQL" id="dataSource">
 	</jdbc:embedded-database>
-	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
+	<!-- Handles HTTP GET requests for /resources/** by efficiently serving 
+		up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />
 
-	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
-	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+	<!-- Resolves views selected for rendering by @Controllers to .jsp resources 
+		in the /WEB-INF/views directory -->
+	<beans:bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
-	
+
 	<beans:bean id="messageSource"
-        class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
-         <beans:property name="fallbackToSystemLocale" value="false"/>
-        <beans:property name="basename" value="classpath:messages" />
-        <beans:property name="defaultEncoding" value="UTF-8"/>
-    </beans:bean>
- 
-    <beans:bean id="localeResolver"
-        class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
-        <beans:property name="defaultLocale" value="en" />
-    </beans:bean>
- 
-    <interceptors>
-        <beans:bean id="localeChangeInterceptor"
-            class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
-            <beans:property name="paramName" value="lang" />
-        </beans:bean>
-        <interceptor>
-            <mapping path="/" />
-             <mapping path="/login" />
-            <beans:bean class="com.bug.tracker.interceptors.TimingInterceptor" />
-        </interceptor>
-    </interceptors>
-    <beans:bean id="emf"
+		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<beans:property name="fallbackToSystemLocale" value="false" />
+		<beans:property name="basename" value="classpath:messages" />
+		<beans:property name="defaultEncoding" value="UTF-8" />
+	</beans:bean>
+
+	<beans:bean id="localeResolver"
+		class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
+		<beans:property name="defaultLocale" value="en" />
+	</beans:bean>
+
+	<interceptors>
+		<beans:bean id="localeChangeInterceptor"
+			class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+			<beans:property name="paramName" value="lang" />
+		</beans:bean>
+		<interceptor>
+			<mapping path="/" />
+			<mapping path="/login" />
+			<beans:bean class="com.bug.tracker.interceptors.TimingInterceptor" />
+		</interceptor>
+	</interceptors>
+	<beans:bean id="emf"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<beans:property name="packagesToScan" value="com.bug.tracker.entity"></beans:property>
 		<beans:property name="dataSource" ref="bugTrackerDataSource" />
@@ -76,8 +78,8 @@
 		<beans:property name="dataSource" ref="bugTrackerDataSource"></beans:property>
 	</beans:bean>
 	<jpa:repositories base-package="com.bug.tracker.repository" />
-	
-<!-- 	<beans:bean id="eventService" class="com.my.tiles.service.impl.DefaultEventService"></beans:bean> -->
+
+	<!-- <beans:bean id="eventService" class="com.my.tiles.service.impl.DefaultEventService"></beans:bean> -->
 
 	<beans:bean id="userService"
 		class="com.bug.tracker.service.impl.DefaultUserService">
@@ -92,7 +94,7 @@
 		class="com.bug.tracker.service.impl.DefaultProjectService">
 	</beans:bean>
 
+	<beans:bean id="applicationInitializer" class="com.bug.tracker.init.ApplicationInitializer"
+		init-method="init"></beans:bean>
 
-	<beans:bean id="applicationInitializer" class="com.bug.tracker.init.ApplicationInitializer" init-method="init"></beans:bean>
-	
 </beans:beans>

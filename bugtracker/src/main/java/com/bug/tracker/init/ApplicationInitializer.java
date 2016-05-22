@@ -15,6 +15,8 @@ import com.bug.tracker.entity.Issue;
 import com.bug.tracker.entity.Project;
 import com.bug.tracker.entity.Role;
 import com.bug.tracker.entity.User;
+import com.bug.tracker.enums.Priority;
+import com.bug.tracker.enums.Status;
 import com.bug.tracker.service.IssueService;
 import com.bug.tracker.service.ProjectService;
 import com.bug.tracker.service.RoleService;
@@ -108,8 +110,21 @@ public class ApplicationInitializer {
 		User issueUser = userService.findByusername("dbuser1");
 		
 		Issue issue = new Issue();
-		issue.setSummary("Issue summary");
-		issue.setDescription("Issue description");
+		issue.setSummary("Adding the header");
+		issue.setDescription("Add header with banner to the application");
+		issue.setStatus(Status.NEW.toString());
+		issue.setPriority(Priority.MEDIUM.toString());
+		issue.setAssignedTo(issueUser);
+		issue.setCreatedBy(issueUser);
+		issue.setProject(projectService.findByName("Hybris project"));
+		
+		issueService.save(issue);
+		
+		issue = new Issue();
+		issue.setSummary("Simple bug");
+		issue.setDescription("Fix the menu navigation");
+		issue.setStatus(Status.WORKINGON.toString());
+		issue.setPriority(Priority.HIGH.toString());
 		issue.setAssignedTo(issueUser);
 		issue.setCreatedBy(issueUser);
 		issue.setProject(projectService.findByName("Hybris project"));
