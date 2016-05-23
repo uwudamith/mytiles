@@ -29,7 +29,7 @@
 						<ul class="dropdown-menu">
 							<li class="${child == 'dashboard' ?'active':'' }"><a href="<spring:url value="${contextPath}/admin" />">Dashboard</a></li>
 							<li class="${child == 'createproject' ?'active':'' }"><a href="<spring:url value="${contextPath}/project" />">Create a Project</a></li>
-							<li><a href="#">Something else here</a></li>
+							<li class="${child == 'user' ?'active':'' }"><a href="<spring:url value="${contextPath}/user" />">Manage Users</a></li>
 							<li role="separator" class="divider"></li>
 							<li><a href="#">Separated link</a></li>
 							<li role="separator" class="divider"></li>

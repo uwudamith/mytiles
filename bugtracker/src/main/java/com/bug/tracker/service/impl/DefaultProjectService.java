@@ -3,6 +3,8 @@ package com.bug.tracker.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.bug.tracker.entity.Project;
@@ -28,6 +30,11 @@ public class DefaultProjectService implements ProjectService {
 	@Override
 	public List<Project> findAll() {
 		return projectRepository.findAll();
+	}
+
+	@Override
+	public Page<Project> findByNameOrderByIdDesc(Pageable pageable) {
+		return projectRepository.findAll(pageable);
 	}
 
 }

@@ -13,6 +13,7 @@
 		<org.aspectj-version>1.6.10</org.aspectj-version>
 		<org.slf4j-version>1.6.6</org.slf4j-version>
 		<spring-security-version>3.2.5.RELEASE</spring-security-version>
+		<spring.datatables.version>2.2</spring.datatables.version>
 	</properties>
 	<repositories>
        <!-- Repository for ORACLE JDBC Driver -->
@@ -193,10 +194,15 @@
 		</dependency>
 		
 		<!-- Spring data jpa -->
-       <dependency>
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-commons</artifactId>
+			<version>1.6.4.RELEASE</version>
+		</dependency>
+		<dependency>
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-jpa</artifactId>
-			<version>1.2.0.RELEASE</version>
+			<version>1.4.4.RELEASE</version>
 		</dependency>
 		
 		<!-- Model mapper -->
@@ -205,6 +211,7 @@
 			<artifactId>modelmapper</artifactId>
 			<version>0.7.5</version>
 		</dependency>
+
 	</dependencies>
     <build>
         <plugins>
