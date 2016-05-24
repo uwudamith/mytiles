@@ -35,7 +35,7 @@
 				<div class="col-lg-2"></div>
 				<div class="col-lg-8">
 					<div class="panel panel-default">
-						<div class="panel-heading panel-heading-blue">Add New Project</div>
+						<div class="panel-heading panel-heading-blue">Manage Project</div>
 						<div class="panel-body panel-form">
 							<form:form commandName="projectForm" action="${actionUrl}"
 								method="POST" class="form-horizontal add-event-form">

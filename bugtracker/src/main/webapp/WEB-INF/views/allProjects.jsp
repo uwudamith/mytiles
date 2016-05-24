@@ -76,7 +76,7 @@
 														pattern="MM/dd/yyyy" value="${project.actualEndDate}" /></td>
 												<td>
 												<div class="btn-group">
-    <button class="btn btn-success" title="View"><i class="fa fa-eye"></i><span class="hidden-xs"> View</span></button>
+    <a href="${contextPath}/project/view?id=${project.id}" class="btn btn-success" title="View"><i class="fa fa-eye"></i><span class="hidden-xs"> View</span></a>
     <button  data-href="${contextPath}/project/delete?id=${project.id}" data-project="${project.name}" class="btn btn-danger" title="Delete" data-toggle="modal" data-target="#confirm-delete"><i class="fa fa-times"></i><span class="hidden-xs"> Delete</span></button>
 </div> 
 												</td>

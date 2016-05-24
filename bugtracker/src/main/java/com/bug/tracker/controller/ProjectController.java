@@ -68,4 +68,19 @@ public class ProjectController {
 		
 		return "redirect:/project/all?delete=true";
 	}
+	
+	@RequestMapping(value = "/project/view", method = RequestMethod.GET)
+	public String viewProject(ModelMap model,@RequestParam("id") long id ) {
+		
+		System.out.println("Viewing project with id : "+id);
+		
+		ProjectForm projectForm = new ProjectForm();
+		projectForm.setId(8);
+		projectForm.setName("Test");
+		model.addAttribute("current", "admin");
+		model.addAttribute("child", "createproject");
+		model.addAttribute("projectForm", projectForm);
+		
+		return "project";
+	}
 }
