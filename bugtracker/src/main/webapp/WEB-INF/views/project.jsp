@@ -90,7 +90,7 @@
 									<div class="form-group">
 										<label for="name" class="col-sm-4 control-label"></label>
 										<div class="col-sm-8">
-											<input type="submit" name="submit" class="btn btn-primary"
+											<input type="submit" name="submit" class="btn btn-success"
 												value="<spring:message code="login.page.submit" />">
 										</div>
 

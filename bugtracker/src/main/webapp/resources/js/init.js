@@ -5,6 +5,12 @@ $(document).ready(function() {
 		$('.input-group.date').datepicker({});
 	}
 
+	$('#confirm-delete').on('show.bs.modal', function(e) {
+        $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
+        
+        $('.proj-name').html('<strong>' + $(e.relatedTarget).data('project') + '</strong>');
+    });
+	
 /*	$(window).scroll(function() {
 	    if($(window).scrollTop() == $(document).height() - $(window).height()) {
 	    	$.ajax({

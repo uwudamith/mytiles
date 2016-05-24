@@ -2,7 +2,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ attribute name="page" required="true" type="com.bug.tracker.wrapper.PageWrapper" %>
 <div class="text-center">
-	<ul class="pagination pagination-centered">
+	<ul class="pagination pagination-centered pagination-sm">
 		<c:choose>
 			<c:when test="${page.firstPage}">
 				<li class="disabled"><span>First</span></li>

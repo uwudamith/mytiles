@@ -20,6 +20,8 @@
 		<intercept-url pattern="/" access="isAuthenticated()" />
 		<intercept-url pattern="/project" access="hasRole('ROLE_ADMIN')" />
 		<intercept-url pattern="/user" access="hasRole('ROLE_ADMIN')" />
+		<intercept-url pattern="/project/delete" access="hasRole('ROLE_ADMIN')" />
+		
 
 		<access-denied-handler error-page="/403" />
 

@@ -14,6 +14,7 @@
 		<org.slf4j-version>1.6.6</org.slf4j-version>
 		<spring-security-version>3.2.5.RELEASE</spring-security-version>
 		<spring.datatables.version>2.2</spring.datatables.version>
+		 <jetty.http.port>9999</jetty.http.port>
 	</properties>
 	<repositories>
        <!-- Repository for ORACLE JDBC Driver -->

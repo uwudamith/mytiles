@@ -55,11 +55,9 @@ font-size: 1.5em;
 }
 
 .content{
-	padding-top:100px;
+	padding-top:60px;
 	vertical-align: middle;
 }
-
-
 
 .error-code h1{
 	font-size:200px;
@@ -98,6 +96,15 @@ line-height: 90px;
 	padding: 40px;
 }
 
+.table > tbody > tr > td {
+     vertical-align: middle;
+}
+
+.panel-heading
+{
+    border-top-left-radius: inherit; 
+    border-top-right-radius: inherit;
+}
 /* CSS used here will be applied after bootstrap.css */
 /* Custom panel-heading colors in the panel components*/
 .panel-default > .panel-heading-custom{
@@ -288,25 +295,34 @@ line-height: 90px;
 	margin-top:10px;
 	margin-left: 5px;
 }
+
+.navbar-login
+{
+    width: 305px;
+    padding: 10px;
+    padding-bottom: 0px;
+}
+
+.navbar-login-session
+{
+    padding: 10px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+}
+
+.icon-size
+{
+    font-size: 87px;
+}
 @media ( min-width : 992px) and (max-width: 1199px) {
-	.event-count {
-		font-size: 95%;
-	}
+	
 }
 
 @media ( min-width : 768px) and (max-width: 991px) {
-	.event-count {
-		font-size: 90%;
-	}
+	
 }
 
 @media only screen and (max-width: 320px) {
-.event-count {
-		font-size: 80%;
-	}
-	.error-code h1 {
-		font-size: 100px;
-		font-weight: bold;
-	}}
+
 
 }
