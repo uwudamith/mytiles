@@ -45,7 +45,8 @@
 							<li role="separator" class="divider"></li>
 							<li class="${child == 'role_add' ?'active':'' }"><a
 								href="<spring:url value="${contextPath}/role/add" />">Add Role</a></li>
-							
+							<li class="${child == 'all_roles' ?'active':'' }"><a
+								href="<spring:url value="${contextPath}/role/all" />">Manage Roles</a></li>
 						</ul></li>
 
 				</security:authorize>
