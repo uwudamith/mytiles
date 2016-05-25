@@ -37,4 +37,14 @@ public class DefaultProjectService implements ProjectService {
 		return projectRepository.findAll(pageable);
 	}
 
+	@Override
+	public Project findOne(int id) {
+		return projectRepository.findOne(id);
+	}
+
+	@Override
+	public void delete(int id) {
+		projectRepository.delete(id);
+	}
+
 }

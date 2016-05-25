@@ -12,4 +12,6 @@ public interface ProjectService {
 	void save(Project project);
 	List<Project> findAll();
 	Page<Project> findByNameOrderByIdDesc(Pageable pageable);
+	Project findOne(int id);
+	void delete(int id);
 }

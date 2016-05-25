@@ -2,6 +2,7 @@ package com.bug.tracker.controller;
 
 import javax.validation.Valid;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -22,6 +23,8 @@ import com.bug.tracker.wrapper.PageWrapper;
 
 @Controller
 public class ProjectController {
+	
+	private static final Logger logger = Logger.getLogger(ProjectController.class);
 	
 	@Autowired
 	ProjectService projectService;
@@ -62,24 +65,26 @@ public class ProjectController {
 	}
 	
 	@RequestMapping(value = "/project/delete", method = RequestMethod.GET)
-	public String deleteProject(ModelMap model,@RequestParam("id") long id ) {
+	public String deleteProject(ModelMap model,@RequestParam("id") int id ) {
 		
-		System.out.println("Deleting project with id : "+id);
+		logger.debug("Deleting project with id : "+id);
+		projectService.delete(id);
 		
 		return "redirect:/project/all?delete=true";
 	}
 	
 	@RequestMapping(value = "/project/view", method = RequestMethod.GET)
-	public String viewProject(ModelMap model,@RequestParam("id") long id ) {
+	public String viewProject(ModelMap model,@RequestParam("id") int id ) {
 		
-		System.out.println("Viewing project with id : "+id);
+		logger.debug("Viewing project with id : "+id);
 		
-		ProjectForm projectForm = new ProjectForm();
-		projectForm.setId(8);
-		projectForm.setName("Test");
+		Project pj = projectService.findOne(id);
+		Populator<Project,ProjectForm> map =new Populator<Project,ProjectForm>();
+		ProjectForm form = map.convert(pj, new ProjectForm());
+		
 		model.addAttribute("current", "admin");
 		model.addAttribute("child", "createproject");
-		model.addAttribute("projectForm", projectForm);
+		model.addAttribute("projectForm", form);
 		
 		return "project";
 	}

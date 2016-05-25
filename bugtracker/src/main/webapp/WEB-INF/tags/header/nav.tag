@@ -43,23 +43,14 @@
 								href="<spring:url value="${contextPath}/user" />">Manage
 									Users</a></li>
 							<li role="separator" class="divider"></li>
-							<li><a href="#">Separated link</a></li>
-							<li role="separator" class="divider"></li>
-							<li><a href="#">One more separated link</a></li>
+							<li class="${child == 'role_add' ?'active':'' }"><a
+								href="<spring:url value="${contextPath}/role/add" />">Add Role</a></li>
+							
 						</ul></li>
 
 				</security:authorize>
 
 			</ul>
-			<%--           <ul class="nav navbar-nav navbar-right">
-          <security:authorize access="isAuthenticated()">
-           	<li><a href="<spring:url value="${contextPath}/logout"></spring:url>">Logout</a></li>
-          </security:authorize>
-          <security:authorize access="! isAuthenticated()">
-           	<li><a href=" <spring:url value="${contextPath}/login"></spring:url>">Login</a></li>
-          </security:authorize>
-           
-          </ul> --%>
 			<ul class="nav navbar-nav navbar-right">
 				<security:authorize access="! isAuthenticated()">
 					<li><a
