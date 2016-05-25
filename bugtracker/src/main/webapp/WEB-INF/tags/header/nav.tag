@@ -39,14 +39,20 @@
 							<li class="${child == 'createproject' ?'active':'' }"><a
 								href="<spring:url value="${contextPath}/project" />">Create
 									a Project</a></li>
+							<li role="separator" class="divider"></li>
 							<li class="${child == 'user' ?'active':'' }"><a
-								href="<spring:url value="${contextPath}/user" />">Manage
+								href="<spring:url value="${contextPath}/user" />">Add
+									Users</a></li>
+							<li class="${child == 'all_users' ?'active':'' }"><a
+								href="<spring:url value="${contextPath}/user/all" />">All
 									Users</a></li>
 							<li role="separator" class="divider"></li>
 							<li class="${child == 'role_add' ?'active':'' }"><a
 								href="<spring:url value="${contextPath}/role/add" />">Add Role</a></li>
 							<li class="${child == 'all_roles' ?'active':'' }"><a
 								href="<spring:url value="${contextPath}/role/all" />">Manage Roles</a></li>
+							<li class="${child == 'assign_role' ?'active':'' }"><a
+								href="<spring:url value="${contextPath}/role/assign" />">Assign Roles</a></li>
 						</ul></li>
 
 				</security:authorize>

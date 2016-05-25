@@ -1,6 +1,8 @@
 package com.bug.tracker.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -10,12 +12,13 @@ import com.bug.tracker.repository.UserRepository;
 import com.bug.tracker.service.UserService;
 
 @Service
-@Transactional
+
 public class DefaultUserService implements UserService{
 
 	@Autowired
 	private UserRepository userRepository;
 	
+	@Transactional
 	public void save(User user){
 		// activate user
 		user.setEnabled(true);
@@ -31,5 +34,20 @@ public class DefaultUserService implements UserService{
 	@Override
 	public Long countByRoles(Role role) {
 		return userRepository.countByRoles(role);
+	}
+
+	@Override
+	public Page<User> findAll(Pageable pageable) {
+		return userRepository.findAll(pageable);
+	}
+
+	@Override
+	public void delete(int id) {
+		userRepository.delete(id);
+	}
+
+	@Override
+	public User findById(int id) {
+		return userRepository.findOne(id);
 	}
 }
