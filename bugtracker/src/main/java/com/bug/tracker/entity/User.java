@@ -29,7 +29,7 @@ public class User {
 	private String password;
 	private boolean enabled;
 	
-	@ManyToMany
+	@ManyToMany(fetch=FetchType.EAGER)
 	@JoinTable
 	private List<Role> roles;
 	

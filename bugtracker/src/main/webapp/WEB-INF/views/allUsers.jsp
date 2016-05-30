@@ -35,6 +35,13 @@
 							Selected role has assigned to users. Please delete it first.
 						</div>
 					</c:if>
+					<c:if test="${param.rolesadded eq true }">
+						<!-- Display error message -->
+						<div class="alert alert-success">
+							<strong>Success ! </strong>
+							Selected roles successfully assigned
+						</div>
+					</c:if>
 		</div>
 		<div class="col-lg-3"></div>
 		</div>
@@ -78,7 +85,7 @@
 												<td>${user.email}</td>
 												<td>
 												<div class="btn-group">
-												<a href="${contextPath}/user/view?id=${user.id}" class="btn btn-primary" title="View"><i class="fa fa-user" aria-hidden="true"></i><span class="hidden-xs"> Roles</span></a>
+												<a href="${contextPath}/role/assign?userId=${user.id}" class="btn btn-primary" title="View"><i class="fa fa-user" aria-hidden="true"></i><span class="hidden-xs"> Roles</span></a>
     <a href="${contextPath}/user/view?id=${user.id}" class="btn btn-success" title="View"><i class="fa fa-eye"></i><span class="hidden-xs"> View</span></a>
     <button  data-href="${contextPath}/user/delete?id=${user.id}" data-project="${user.name}" class="btn btn-danger" title="Delete" data-toggle="modal" data-target="#confirm-delete"><i class="fa fa-times"></i><span class="hidden-xs"> Delete</span></button>
 </div> 

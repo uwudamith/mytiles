@@ -10,10 +10,10 @@
 <head>
 <master:meta></master:meta>
 <header:header></header:header>
-<title>Project</title>
+<title>Assign Role</title>
 </head>
 <body>
-<c:url value="${contextPath}/project" var="actionUrl"></c:url>
+<c:url value="${contextPath}/role/assign" var="actionUrl"></c:url>
 	<header:nav></header:nav>
 	<div class="container">
 		<div class="content">
@@ -35,53 +35,37 @@
 				<div class="col-lg-2"></div>
 				<div class="col-lg-8">
 					<div class="panel panel-default">
-						<div class="panel-heading panel-heading-blue">Manage Project</div>
+						<div class="panel-heading panel-heading-blue">
+						<span class="panel-title pull-left"> Assign Roles to User</span> <a
+									href="${contextPath}/user/all"
+									class="btn btn-warning pull-right"><i
+									class=" fa fa-arrow-left" aria-hidden="true"></i></a>
+								<div class="clearfix"></div>
+						</div>
 						<div class="panel-body panel-form">
-							<form:form commandName="projectForm" action="${actionUrl}"
+							<form:form commandName="userRoles" action="${actionUrl}"
 								method="POST" class="form-horizontal add-event-form">
 								<div class="row">
 									<div class="form-group">
-										<label for="name" class="col-sm-4 control-label">Name</label>
+										<label for="name" class="col-sm-4 control-label">User Name</label>
 										<div class="col-sm-8">
-											<form:hidden path="id" id="hdnId" />
-											<form:input path="name" cssClass="form-control"
-												id="txtName" placeholder="Name" />
-												<form:errors path="name" element="div" cssClass="my-notify-warning"/>
+											<form:hidden path="user.id" id="hdnId" />
+											<form:input path="user.username" cssClass="form-control disabled"
+												id="txtName" placeholder="Name" readonly="true" />
 												
-											
 										</div>
 									</div>
 									<div class="form-group">
-										<label for="name" class="col-sm-4 control-label">Start Date</label>
+										<label for="name" class="col-sm-4 control-label">Roles</label>
 										<div class="col-sm-8">
-											<div class="input-group date">
-												<form:input path="startDate" type="text" class="form-control"
-													placeholder="Start Date" />
-												<span class="input-group-addon"><i
-													class="glyphicon glyphicon-th"></i></span>
-											</div>
-										</div>
-									</div>
-									<div class="form-group">
-										<label for="name" class="col-sm-4 control-label">Target End Date</label>
-										<div class="col-sm-8">
-											<div class="input-group date">
-												<form:input path="targetEndDate" type="text" class="form-control"
-													placeholder="Target End Date" />
-												<span class="input-group-addon"><i
-													class="glyphicon glyphicon-th"></i></span>
-											</div>
-										</div>
-									</div>
-									<div class="form-group">
-										<label for="name" class="col-sm-4 control-label">Actual End Date</label>
-										<div class="col-sm-8">
-											<div class="input-group date">
-												<form:input path="actualEndDate" type="text" class="form-control"
-													placeholder="Actual End Date" />
-												<span class="input-group-addon"><i
-													class="glyphicon glyphicon-th"></i></span>
-											</div>
+											<c:forEach items="${roles}" var="role" varStatus="loop">
+											 <div class="checkbox">
+											  <label>
+											  		<form:checkbox path="selectedRoles" value="${role.id}" label="${role.name}" />
+											  </label>
+											 </div>
+											</c:forEach>
+											<form:errors path="selectedRoles" element="div" cssClass="my-notify-warning"></form:errors>
 										</div>
 									</div>
 									<div class="form-group">

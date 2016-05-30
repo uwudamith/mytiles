@@ -97,7 +97,7 @@
 	<beans:bean id="projectService"
 		class="com.bug.tracker.service.impl.DefaultProjectService">
 	</beans:bean>
-
+	
 	<!-- <beans:bean id="applicationInitializer" class="com.bug.tracker.init.ApplicationInitializer"
 		init-method="init"></beans:bean> -->
 <beans:bean id="validator"

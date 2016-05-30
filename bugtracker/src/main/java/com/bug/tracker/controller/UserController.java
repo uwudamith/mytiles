@@ -43,12 +43,24 @@ public class UserController {
             return "user";
         }
 		
-		Populator<UserForm, User> map =new Populator<UserForm, User>();
-		User usr = map.convert(userForm, new User());
-		usr.setPassword(encode.encode(usr.getPassword()));
-		userService.save(usr);
-		
-		return "redirect:/user?save=true";
+		if(userForm.getId() > 0){
+			User usr = userService.findById(userForm.getId());
+			usr.setName(userForm.getName());
+			usr.setEmail(userForm.getEmail());
+			usr.setPassword(encode.encode(userForm.getPassword()));
+			userService.save(usr);
+			return "redirect:/user?update=true";
+		}else{
+			User usr = new User();
+			usr.setName(userForm.getName());
+			usr.setEmail(userForm.getEmail());
+			usr.setUsername(userForm.getUsername());
+			usr.setPassword(encode.encode(userForm.getPassword()));
+			userService.save(usr);
+			
+			return "redirect:/user?save=true";
+		}
+
 	}
 	
 	@RequestMapping(value = "/user/all", method = RequestMethod.GET)

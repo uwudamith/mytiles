@@ -17,7 +17,7 @@
 			<div class="row">
 				<div class="col-lg-4"></div>
 				<div class="col-lg-4 error-code">
-					<a href="${contextPath}/userInfo"><h2>GO TO HOME</h2></a>
+					<a href="${contextPath}/"><h2>GO TO HOME</h2></a>
 				</div>
 				<div class="col-lg-4"></div>
 			</div>

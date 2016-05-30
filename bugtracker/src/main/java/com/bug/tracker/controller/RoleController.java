@@ -1,5 +1,8 @@
 package com.bug.tracker.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
@@ -15,7 +18,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.bug.tracker.entity.Role;
+import com.bug.tracker.entity.User;
 import com.bug.tracker.forms.RoleForm;
+import com.bug.tracker.forms.UserRoles;
 import com.bug.tracker.mappers.Populator;
 import com.bug.tracker.service.RoleService;
 import com.bug.tracker.service.UserService;
@@ -98,4 +103,44 @@ public class RoleController {
 			return "redirect:/role/all?delete=true";
 		}
 	}
+	
+	@RequestMapping(value = "/role/assign", method = RequestMethod.POST)
+	public String saveAssignedRoles(@Valid @ModelAttribute("userRoles") UserRoles userRoles,BindingResult bindingResult, Model model) {
+		
+		if (bindingResult.hasErrors()) {
+			List<Role> roles = roleService.findAll();
+			model.addAttribute("roles", roles);
+			return "manageRoles";
+        }
+		List<Role> roles = roleService.findByIdIn(userRoles.getSelectedRoles());
+		userRoles.getUser().setRoles(roles);
+		userService.save(userRoles.getUser());
+
+		return "redirect:/user/all?rolesadded=true";
+	}
+	
+	@RequestMapping(value = "/role/assign", method = RequestMethod.GET)
+	public String assignRole(Model model,@RequestParam("userId") int userId) {
+		
+		User user = userService.findById(userId);
+		List<Role> roles = roleService.findAll();
+		
+		UserRoles r = new UserRoles();
+		r.setUser(user);
+		model.addAttribute("user", user);
+		model.addAttribute("roles", roles);
+		r.setSelectedRoles(getSelectedRoles(user));
+		model.addAttribute("userRoles",r);
+		
+		return "manageRoles";
+	}
+	
+	private List<Integer> getSelectedRoles(User user){
+		List<Integer> intList = new ArrayList<Integer>();
+		for (Role role : user.getRoles()) {
+			intList.add(role.getId());
+		}
+		return intList;
+	}
+
 }

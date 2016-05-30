@@ -1,5 +1,7 @@
 package com.bug.tracker.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -37,6 +39,16 @@ public class DefaultRoleService implements RoleService {
 	@Override
 	public void deleteRole(int id) {
 		roleRepository.delete(id);
+	}
+
+	@Override
+	public List<Role> findAll() {
+		return roleRepository.findAll();
+	}
+
+	@Override
+	public List<Role> findByIdIn(List<Integer> idList) {
+		return roleRepository.findByIdIn(idList);
 	}
 	
 }

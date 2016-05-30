@@ -28,6 +28,14 @@
 							<spring:message code="save.success.message" />
 						</div>
 					</c:if>
+					<c:if test="${param.update eq true }">
+						<!-- Display error message -->
+						<div class="alert alert-success">
+							<strong><spring:message
+									code="save.success"/> </strong>
+							User details successfully updated
+						</div>
+					</c:if>
 				</div>
 				<div class="col-lg-2"></div>
 			</div>
@@ -47,31 +55,24 @@
 											<form:input path="name" cssClass="form-control"
 												id="txtName" placeholder="Name" />
 												<!-- Display error message -->
-												<div class="val-erros">
-													<form:errors path="name"></form:errors>
-												</div>
+												<form:errors path="name" element="div" cssClass="my-notify-warning"/>
 										</div>
 									</div>
 									<div class="form-group">
 										<label for="name" class="col-sm-4 control-label">Email</label>
 										<div class="col-sm-8">
-											<form:input path="email" cssClass="form-control"
+											<form:input path="email"  autocomplete="off" cssClass="form-control"
 												id="txtEmail" placeholder="Email" />
 												<!-- Display error message -->
-												<div class="val-erros">
-													<form:errors path="email"></form:errors>
-												</div>
+												<form:errors path="email" element="div" cssClass="my-notify-warning"></form:errors>
 										</div>
 									</div>
 									<div class="form-group">
 										<label for="name" class="col-sm-4 control-label">Username</label>
 										<div class="col-sm-8">
-											<form:input path="username" cssClass="form-control"
+											<form:input path="username"  cssClass="form-control"
 												id="txtUserName" placeholder="Username" />
-												<!-- Display error message -->
-												<div class="val-erros">
-													<form:errors path="username"></form:errors>
-												</div>
+												<form:errors path="username" element="div" cssClass="my-notify-warning"></form:errors>
 										</div>
 									</div>
 									<div class="form-group">
@@ -79,10 +80,7 @@
 										<div class="col-sm-8">
 											<form:password path="password" cssClass="form-control"
 												id="txtPassword" placeholder="Password" />
-												<!-- Display error message -->
-												<div class="val-erros">
-													<form:errors path="password"></form:errors>
-												</div>
+												<form:errors path="password" element="div" cssClass="my-notify-warning"></form:errors>
 										</div>
 									</div>
 									<div class="form-group">

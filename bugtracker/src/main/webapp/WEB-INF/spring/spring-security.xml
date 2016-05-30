@@ -7,7 +7,7 @@
     http://www.springframework.org/schema/beans/spring-beans-4.1.xsd">
 
 
-	<http use-expressions="true">
+	<http use-expressions="true" auto-config="true">
 		<intercept-url pattern="/login" access="isAnonymous()" />
 		<intercept-url pattern="/logout" access="isAnonymous()" />
 
@@ -20,7 +20,9 @@
 		<intercept-url pattern="/" access="isAuthenticated()" />
 		<intercept-url pattern="/project" access="hasRole('ROLE_ADMIN')" />
 		<intercept-url pattern="/user" access="hasRole('ROLE_ADMIN')" />
-		<intercept-url pattern="/project/delete" access="hasRole('ROLE_ADMIN')" />
+		<intercept-url pattern="/project/**" access="hasRole('ROLE_ADMIN')" />
+		<intercept-url pattern="/user/**" access="hasRole('ROLE_ADMIN')" />
+		<intercept-url pattern="/role/**" access="hasRole('ROLE_ADMIN')" />
 		
 
 		<access-denied-handler error-page="/403" />
@@ -64,4 +66,7 @@
 
 	</authentication-manager>
 
+<beans:bean id="customAuthenticationSuccessHandler"
+		class="com.bug.tracker.handler.CustomAuthenticationSuccessHandler">
+	</beans:bean>
 </beans:beans>

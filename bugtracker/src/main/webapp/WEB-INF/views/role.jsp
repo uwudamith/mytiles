@@ -46,10 +46,7 @@
 											<form:hidden path="id" id="hdnId" />
 											<form:input path="name" cssClass="form-control"
 												id="txtName" placeholder="Name" />
-												<!-- Display error message -->
-												<div class="val-erros">
-													<form:errors path="name"></form:errors>
-												</div>
+												<form:errors path="name" element="div" cssClass="my-notify-warning"/>
 										</div>
 									</div>
 									<div class="form-group">

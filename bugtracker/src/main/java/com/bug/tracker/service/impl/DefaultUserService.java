@@ -13,12 +13,13 @@ import com.bug.tracker.service.UserService;
 
 @Service
 
+@Transactional
 public class DefaultUserService implements UserService{
 
 	@Autowired
 	private UserRepository userRepository;
 	
-	@Transactional
+	
 	public void save(User user){
 		// activate user
 		user.setEnabled(true);

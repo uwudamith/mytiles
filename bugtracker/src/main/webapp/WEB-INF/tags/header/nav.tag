@@ -1,7 +1,7 @@
-
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/security/tags"
 	prefix="security"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!-- Fixed navbar -->
 <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
@@ -51,8 +51,6 @@
 								href="<spring:url value="${contextPath}/role/add" />">Add Role</a></li>
 							<li class="${child == 'all_roles' ?'active':'' }"><a
 								href="<spring:url value="${contextPath}/role/all" />">Manage Roles</a></li>
-							<li class="${child == 'assign_role' ?'active':'' }"><a
-								href="<spring:url value="${contextPath}/role/assign" />">Assign Roles</a></li>
 						</ul></li>
 
 				</security:authorize>
@@ -85,7 +83,12 @@
 										<p class="text-left">
 											<strong>Salman Khan</strong>
 										</p>
-										<p class="text-left small">crazytodevelop@@gmail.com</p>
+										<p class="text-left small">
+										
+										<c:if test="${not empty userEmail}">
+											${userEmail}
+										</c:if>								
+										</p>
 										<p class="text-left">
 											<a href="#" class="btn btn-primary btn-block btn-sm">Profile</a>
 										</p>
