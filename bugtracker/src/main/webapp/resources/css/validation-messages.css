@@ -1,3 +1,7 @@
+/* Thanks to this website for this valuable code
+ 	http://isabelcastillo.com/error-info-messages-css#jl-down 
+ */
+
 .my-notify-info, .my-notify-success, .my-notify-warning, .my-notify-error {
     padding:10px;
     margin:10px 0;
@@ -34,16 +38,20 @@
 .my-notify-info {
     color: #00529B;
     background-color: #BDE5F8;
+    border-left: 4px solid #286090;
 }
 .my-notify-success {
     color: #4F8A10;
     background-color: #DFF2BF;
+    border-left: 4px solid #449d44;
 }
 .my-notify-warning {
     color: #9F6000;
     background-color: #FEEFB3;
+    border-left: 4px solid #ec971f;
 }
 .my-notify-error {
     color: #D8000C;
     background-color: #FFBABA;
+    border-left: 4px solid #d9534f;
 }

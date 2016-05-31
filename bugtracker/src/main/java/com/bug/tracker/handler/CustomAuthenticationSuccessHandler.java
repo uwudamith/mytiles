@@ -23,8 +23,7 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
 
 	private RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
 	
-	@Autowired
-	UserService userService;
+	private UserService userService;
 	
 	@Override
 	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication auth)
@@ -33,8 +32,8 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
 		HttpSession session = request.getSession();
 		
 		/*Set some session variables*/
-		User authUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();  
-        com.bug.tracker.entity.User user  = userService.findByusername(authUser.getUsername());
+		User aUser = (User)auth.getPrincipal();
+        //com.bug.tracker.entity.User user  = userService.findByusername(aUser.getUsername());
         
         session.setAttribute("userEmail", "test");  
         
@@ -62,4 +61,13 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
 		this.redirectStrategy = redirectStrategy;
 	}
 
+	public UserService getUserService() {
+		return userService;
+	}
+
+	public void setUserService(UserService userService) {
+		this.userService = userService;
+	}
+
+	
 }

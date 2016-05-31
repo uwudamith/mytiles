@@ -113,8 +113,9 @@ public class RoleController {
 			return "manageRoles";
         }
 		List<Role> roles = roleService.findByIdIn(userRoles.getSelectedRoles());
-		userRoles.getUser().setRoles(roles);
-		userService.save(userRoles.getUser());
+		User user = userService.findById(userRoles.getUser().getId());
+		user.setRoles(roles);
+		userService.save(user);
 
 		return "redirect:/user/all?rolesadded=true";
 	}

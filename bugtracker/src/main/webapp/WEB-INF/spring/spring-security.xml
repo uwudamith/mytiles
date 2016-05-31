@@ -40,8 +40,9 @@
 			remember-me-parameter="remember-me" data-source-ref="bugTrackerDataSource"
 			user-service-ref="userDetailsService" />
 
+	
 	</http>
-
+	
 	<authentication-manager>
 
 		<authentication-provider>
@@ -66,7 +67,5 @@
 
 	</authentication-manager>
 
-<beans:bean id="customAuthenticationSuccessHandler"
-		class="com.bug.tracker.handler.CustomAuthenticationSuccessHandler">
-	</beans:bean>
+
 </beans:beans>
