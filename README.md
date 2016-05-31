@@ -9,7 +9,6 @@ This is Spring MVC project and following technologies are associated with the pr
   <li>jetty</li>
   <li>junit</li>
   <li>JSP</li>
-  <li>JSP</li>
   <li>Bootstrap</li>
   <li>jQuery</li>
 </ul>
@@ -21,3 +20,5 @@ I have implemented follwing areas inside the application and more featured will 
   <li>interceptors</li>
   <li>Spring MVC Internationalization (i18n) and Localization</li>
 </ul>
+
+![Alt text](login.PNG?raw=true "Login")
