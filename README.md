@@ -11,6 +11,7 @@ This is Spring MVC project and following technologies are associated with the pr
   <li>JSP</li>
   <li>Bootstrap</li>
   <li>jQuery</li>
+  <li>Spring JPA</li>
 </ul>
 
 I have implemented follwing areas inside the application and more featured will be added by time.
@@ -19,6 +20,11 @@ I have implemented follwing areas inside the application and more featured will 
   <li>Bootstrap based responsive development</li>
   <li>interceptors</li>
   <li>Spring MVC Internationalization (i18n) and Localization</li>
+  <li>Server side pagination with Spring JPA</li>
 </ul>
 
 ![Alt text](login.PNG?raw=true "Login")
+![Alt text](server_side_pagination.PNG?raw=true "Server side pagination")
+![Alt text](responsive_layout.PNG?raw=true "Responsive layout")
+![Alt text](validation_messages.PNG?raw=true "Validation messages")
+![Alt text](colorful_popups.PNG?raw=true "Colorfull modal popus")
