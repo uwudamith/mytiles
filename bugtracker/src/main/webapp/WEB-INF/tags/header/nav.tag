@@ -84,9 +84,8 @@
 											<strong>Salman Khan</strong>
 										</p>
 										<p class="text-left small">
-										
-										<c:if test="${not empty userEmail}">
-											${userEmail}
+										<c:if test="${not empty email}">
+											${email}
 										</c:if>								
 										</p>
 										<p class="text-left">

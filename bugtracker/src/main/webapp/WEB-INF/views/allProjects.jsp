@@ -48,10 +48,10 @@
 										<tr>
 											<th class="col-md-1">#</th>
 											<th class="col-md-3">Project Name</th>
-											<th class="col-md-2">Start Date</th>
+											<th class="col-md-1">Start Date</th>
 											<th class="col-md-2">Target End Date</th>
 											<th class="col-md-2">Actual End Date</th>
-											<th class="col-md-2">&nbsp;</th>
+											<th class="col-md-3">&nbsp;</th>
 										</tr>
 									</thead>
 									<tfoot>
@@ -76,6 +76,7 @@
 														pattern="MM/dd/yyyy" value="${project.actualEndDate}" /></td>
 												<td>
 												<div class="btn-group">
+												<a href="${contextPath}/role/assign?userId=${user.id}" class="btn btn-primary" title="View"><i class="fa fa-user" aria-hidden="true"></i><span class="hidden-xs"> Roles</span></a>
     <a href="${contextPath}/project/view?id=${project.id}" class="btn btn-success" title="View"><i class="fa fa-eye"></i><span class="hidden-xs"> View</span></a>
     <button  data-href="${contextPath}/project/delete?id=${project.id}" data-project="${project.name}" class="btn btn-danger" title="Delete" data-toggle="modal" data-target="#confirm-delete"><i class="fa fa-times"></i><span class="hidden-xs"> Delete</span></button>
 </div> 
