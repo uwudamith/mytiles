@@ -11,14 +11,18 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.bug.tracker.entity.Project;
+import com.bug.tracker.entity.User;
 import com.bug.tracker.forms.ProjectForm;
+import com.bug.tracker.forms.ProjectUsers;
 import com.bug.tracker.mappers.Populator;
 import com.bug.tracker.service.ProjectService;
+import com.bug.tracker.service.UserService;
 import com.bug.tracker.wrapper.PageWrapper;
 
 @Controller
@@ -28,6 +32,9 @@ public class ProjectController {
 	
 	@Autowired
 	ProjectService projectService;
+	
+	@Autowired
+	UserService userService;
 	
 	 @RequestMapping(value = "/project/all", method = RequestMethod.GET)
 	  public String adminPage(Model model,Pageable pageable) {
@@ -88,4 +95,45 @@ public class ProjectController {
 		
 		return "project";
 	}
+	
+	@RequestMapping(value = "/project/users/{id:.*}", method = {RequestMethod.GET,RequestMethod.POST})
+	public String assignUsers(ModelMap model,
+			@PathVariable("id") final int projId,
+			@ModelAttribute("pu") ProjectUsers projectUsers,
+			@RequestParam( name="username",required=false) String username,
+			Pageable pageable ) {
+		
+		setPaginWithProjectModelData(model, projId, projectUsers, pageable);
+
+		return "projectUsers";
+	}
+
+	private void setPaginWithProjectModelData(ModelMap model, final int projId, ProjectUsers projectUsers,
+			Pageable pageable) {
+		Project pj =  projectService.findOne(projId);
+		ProjectUsers pu = new ProjectUsers();
+		
+		if(pj!=null && pj.getId() > 0){
+			pu.setProjectId(pj.getId());
+			pu.setProjectName(pj.getName());
+			if(projectUsers.getUsername() != null){
+				pu.setUsername(projectUsers.getUsername());
+			}
+			if(projectUsers.getUsers() != null){
+				pu.setUsers(projectUsers.getUsers());
+			}
+			model.addAttribute("pu",pu);
+		}
+
+		if(projectUsers.getUsername() != null && !projectUsers.getUsername().isEmpty()){
+			Page<User> data = userService.findAllByNameContainingIgnoreCase(projectUsers.getUsername(),pageable);
+			PageWrapper<User> page = new PageWrapper<User>(data, "/project/users/"+projId);
+			model.addAttribute("page", page);
+		}else{
+			Page<User> data = userService.findAll(pageable);
+			PageWrapper<User> page = new PageWrapper<User>(data, "/project/users/"+projId);
+			model.addAttribute("page", page);
+		}
+	}
 }
+

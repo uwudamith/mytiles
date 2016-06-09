@@ -13,4 +13,5 @@ public interface UserService {
 	Page<User> findAll(Pageable pageable);
 	void delete(int id);
 	User findById(int id);
+	Page<User> findAllByNameContainingIgnoreCase(String name,Pageable pageable);
 }

@@ -51,4 +51,9 @@ public class DefaultUserService implements UserService{
 	public User findById(int id) {
 		return userRepository.findOne(id);
 	}
+
+	@Override
+	public Page<User> findAllByNameContainingIgnoreCase(String name, Pageable pageable) {
+		return userRepository.findAllByNameContainingIgnoreCase(name, pageable);
+	}
 }
