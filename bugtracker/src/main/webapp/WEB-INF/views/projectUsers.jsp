@@ -71,11 +71,10 @@
 											id="all-projects">
 											<thead>
 												<tr>
-													<th class="col-md-1">&nbsp;</th>
 													<th class="col-md-3">Name</th>
-													<th class="col-md-2">Username</th>
-													<th class="col-md-3">Email</th>
-													<th class="col-md-3">&nbsp;</th>
+													<th class="col-md-3">Username</th>
+													<th class="col-md-4">Email</th>
+													<th class="col-md-2">&nbsp;</th>
 												</tr>
 											</thead>
 											<tfoot>
@@ -90,14 +89,15 @@
 											<tbody>
 												<c:forEach items="${page.content}" var="user">
 													<tr>
-														<td class="f-500 c-cyan">
-														<form:checkbox path="users" value="${user.id}" />
-														</td>
 														<td>${user.name}</td>
 														<td>${user.username}</td>
 														<td>${user.email}</td>
 														<td>
-															<div class="btn-group"></div>
+															<div class="btn-group">
+															<a href="${contextPath}/project/users/${project.id}"
+															class="btn btn-primary" title="View"><span
+															class="hidden-xs"> Add</span></a>
+															</div>
 														</td>
 													</tr>
 												</c:forEach>
