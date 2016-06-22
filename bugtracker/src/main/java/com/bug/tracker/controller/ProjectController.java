@@ -1,12 +1,17 @@
 package com.bug.tracker.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -59,7 +64,7 @@ public class ProjectController {
 	}
 	
 	@RequestMapping(value = "/project", method = RequestMethod.POST)
-	public String insertOrUpdate(@Valid @ModelAttribute("projectForm") ProjectForm projectForm, BindingResult bindingResult,ModelMap model) {
+	public String insertOrUpdate(@RequestParam("dddd") String foo,@Valid @ModelAttribute("projectForm") ProjectForm projectForm, BindingResult bindingResult,ModelMap model) {
 		if (bindingResult.hasErrors()) {
             return "project";
         }
@@ -97,42 +102,67 @@ public class ProjectController {
 	}
 	
 	@RequestMapping(value = "/project/users/{id:.*}", method = {RequestMethod.GET,RequestMethod.POST})
+	@Transactional
 	public String assignUsers(ModelMap model,
 			@PathVariable("id") final int projId,
 			@ModelAttribute("pu") ProjectUsers projectUsers,
 			@RequestParam( name="username",required=false) String username,
 			Pageable pageable ) {
 		
-		setPaginWithProjectModelData(model, projId, projectUsers, pageable);
+		//remove user from project
+		if(projectUsers != null && projectUsers.isRemoveUser()){
+			projectService.deleteAssignedUser(projId, projectUsers.getUserid());
+			projectUsers.setRemoveUser(false);
+			projectUsers.setMessage("Deleted");
+		}else if(projectUsers != null && projectUsers.isAddUser()){
+			Project pj = projectService.findOne(projId);
+			User user = userService.findById(projectUsers.getUserid());
+			List<User> users = pj.getAssignedUser();
+			users.add(user);
+			pj.setAssignedUser(users);
+			projectService.save(pj);
+			projectUsers.setAddUser(false);
+			projectUsers.setMessage("Assigned");
+		}
+		
+		if(projectUsers.getSize() > 0 ){
+			Pageable pg = new PageRequest(projectUsers.getPage(), projectUsers.getSize());
+			setPaginWithProjectModelData(model, projId, projectUsers, pg);
+		}else{
+			setPaginWithProjectModelData(model, projId, projectUsers, pageable);
+		}
 
 		return "projectUsers";
 	}
 
 	private void setPaginWithProjectModelData(ModelMap model, final int projId, ProjectUsers projectUsers,
 			Pageable pageable) {
-		Project pj =  projectService.findOne(projId);
-		ProjectUsers pu = new ProjectUsers();
 		
-		if(pj!=null && pj.getId() > 0){
-			pu.setProjectId(pj.getId());
-			pu.setProjectName(pj.getName());
-			if(projectUsers.getUsername() != null){
-				pu.setUsername(projectUsers.getUsername());
-			}
-			if(projectUsers.getUsers() != null){
-				pu.setUsers(projectUsers.getUsers());
-			}
-			model.addAttribute("pu",pu);
-		}
-
+		projectUsers.setProjectId(projId);
+		projectUsers.setPage(pageable.getPageNumber());
+		projectUsers.setSize(pageable.getPageSize());
+		
+		model.addAttribute("pu",projectUsers);
+		
 		if(projectUsers.getUsername() != null && !projectUsers.getUsername().isEmpty()){
 			Page<User> data = userService.findAllByNameContainingIgnoreCase(projectUsers.getUsername(),pageable);
+			setUserAddedState(projId,data);
 			PageWrapper<User> page = new PageWrapper<User>(data, "/project/users/"+projId);
 			model.addAttribute("page", page);
 		}else{
 			Page<User> data = userService.findAll(pageable);
+			setUserAddedState(projId,data);
 			PageWrapper<User> page = new PageWrapper<User>(data, "/project/users/"+projId);
 			model.addAttribute("page", page);
+		}
+	}
+	
+	private void setUserAddedState(int projectId,Page<User> page){
+		for (User user : page) {
+			User u = projectService.findUser(projectId, user.getId());
+			if(u != null && u.getId() > 0){
+				user.setAdded(true);
+			}
 		}
 	}
 }

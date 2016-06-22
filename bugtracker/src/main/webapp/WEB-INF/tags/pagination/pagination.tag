@@ -11,9 +11,9 @@
 
 			</c:when>
 			<c:otherwise>
-				<li><a class="${actionClass}" href="${page.url}?page.page=${1}&page.size=${page.size}" >First</a></li>
+				<li><a class="${actionClass}" href="${page.url}?page.page=${1}&page.size=${page.size}" data-page="1" data-size="${page.size}" >First</a></li>
 				<li><a class="${actionClass}"
-					href="${page.url}?page.page=${page.number-1}&page.size=${page.size}" >Prev</a></li>
+					href="${page.url}?page.page=${page.number-1}&page.size=${page.size}" data-page="${page.number-1}" data-size="${page.size}">Prev</a></li>
 			</c:otherwise>
 		</c:choose>
 
@@ -22,7 +22,7 @@
 				<c:set var="active" value="active"></c:set>
 			</c:if>
 			<li class="${active}"><a class="${actionClass}"
-				href="${page.url}?page.page=${item.number}&page.size=${page.size}" >${item.number}</a>
+				href="${page.url}?page.page=${item.number}&page.size=${page.size}" data-page="${item.number}" data-size="${page.size}">${item.number}</a>
 			</li>
 			<c:remove var="active" />
 		</c:forEach>
@@ -33,9 +33,9 @@
 			</c:when>
 			<c:otherwise>
 				<li><a class="${actionClass}"
-					href="${page.url}?page.page=${page.number+1}&page.size=${page.size}" >Next</a></li>
+					href="${page.url}?page.page=${page.number+1}&page.size=${page.size}"  data-page="${page.number+1}" data-size="${page.size}">Next</a></li>
 				<li><a class="${actionClass}"
-					href="${page.url}?page.page=${page.totalPages}&page.size=${page.size}" >Last</a></li>
+					href="${page.url}?page.page=${page.totalPages}&page.size=${page.size}" data-page="${page.totalPages}" data-size="${page.size}" >Last</a></li>
 			</c:otherwise>
 		</c:choose>
 

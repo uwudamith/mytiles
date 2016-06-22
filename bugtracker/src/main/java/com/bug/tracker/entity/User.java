@@ -8,10 +8,13 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -39,8 +42,20 @@ public class User {
 	@OneToMany(cascade=CascadeType.ALL, mappedBy="assignedTo",fetch=FetchType.LAZY)
 	private List<Issue> issue;
 	
-	@ManyToMany(mappedBy="assignedUser")
+	 @ManyToMany(cascade = {CascadeType.MERGE})
+	 @JoinTable(name="Project_Users",joinColumns=@JoinColumn(name="id"),inverseJoinColumns=@JoinColumn(name="project_id"))
 	private List<Project> assignedProject;
+	
+	
+	@Transient boolean isAdded;
+	
+	public boolean isAdded() {
+		return isAdded;
+	}
+
+	public void setAdded(boolean isAdded) {
+		this.isAdded = isAdded;
+	}
 	
 	public String getName() {
 		return name;

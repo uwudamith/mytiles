@@ -44,6 +44,7 @@
 										<label for="name" class="col-sm-4 control-label">Name</label>
 										<div class="col-sm-8">
 											<form:hidden path="id" id="hdnId" />
+											<input type="hidden" value="test" name="dddd">
 											<form:input path="name" cssClass="form-control"
 												id="txtName" placeholder="Name" />
 												<form:errors path="name" element="div" cssClass="my-notify-warning"/>

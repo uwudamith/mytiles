@@ -22,11 +22,10 @@
 			<div class="row">
 				<div class="col-lg-2"></div>
 				<div class="col-lg-8">
-					<c:if test="${param.save eq true }">
+					<c:if test="${pu.message ne null }">
 						<!-- Display error message -->
 						<div class="alert alert-success">
-							<strong><spring:message code="save.success" /> </strong>
-							<spring:message code="save.success.message" />
+							${pu.message}
 						</div>
 					</c:if>
 				</div>
@@ -53,6 +52,9 @@
 											<div class="col-sm-4">
 												<form:hidden path="page" id="hdnPage" />
 												<form:hidden path="size" id="hdnSize" />
+												<form:hidden path="removeUser" id="hdnRemoveUser" />
+												<form:hidden path="addUser" id="hdnAddUser" />
+												<form:hidden path="userid" id="hdnUserId" />
 												<form:input path="username" cssClass="form-control" id="txtUserName"
 													placeholder="Name" />
 											</div>
@@ -94,9 +96,19 @@
 														<td>${user.email}</td>
 														<td>
 															<div class="btn-group">
-															<a href="${contextPath}/project/users/${project.id}"
-															class="btn btn-primary" title="View"><span
-															class="hidden-xs"> Add</span></a>
+															<c:if test="${user.added eq true}">
+															<button data-toggle="modal" data-target="#confirm-remove-user" data-userid="${user.id}"
+															class="btn btn-danger remove-userd" title="View">
+															<i class="fa fa-trash-o" title="Delete" aria-hidden="true"></i><span
+															class="sr-only">Remove</span></button>
+															</c:if>
+															<c:if test="${user.added ne true}">
+															<a href="#" data-userid="${user.id}"
+															class="btn btn-success add-user" title="View">
+															<i class="fa fa-plus-circle" aria-hidden="true" title="Add"></i><span
+															class="sr-only">Add</span></a>
+															</c:if>
+															
 															</div>
 														</td>
 													</tr>
@@ -114,7 +126,32 @@
 				<div class="col-lg-2"></div>
 			</div>
 		</div>
+		<div class="modal fade" id="confirm-remove-user" tabindex="-1"
+			role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content panel-default">
 
+					<div class="modal-header panel-heading-yellow">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-hidden="true">&times;</button>
+						<h4 class="modal-title" id="myModalLabel">Confirm Delete</h4>
+					</div>
+
+					<div class="modal-body">
+						<p>
+							You are about to remove user form selected project
+						</p>
+						<p>Do you want to proceed?</p>
+						<p class="debug-url"></p>
+					</div>
+
+					<div class="modal-footer">
+						<button type="button" class="btn btn-success" data-dismiss="modal">Cancel</button>
+						<a class="btn btn-danger btn-ok">Delete</a>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 	<!-- /container -->
 

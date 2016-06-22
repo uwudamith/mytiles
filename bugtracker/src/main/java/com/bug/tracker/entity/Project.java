@@ -3,6 +3,7 @@ package com.bug.tracker.entity;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -11,8 +12,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "tbl_projects")
@@ -48,8 +52,8 @@ public class Project {
 	@JoinColumn(name = "modified_user_id")
 	private User modifiedBy;
 
-	@ManyToMany
-	@JoinTable
+	@ManyToMany(cascade ={CascadeType.MERGE})
+	@JoinTable(name="Project_Users",joinColumns=@JoinColumn(name="project_id"),inverseJoinColumns=@JoinColumn(name="id"))
 	private List<User> assignedUser;
 	
 	public int getId() {

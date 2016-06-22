@@ -18,7 +18,7 @@
 	<annotation-driven >
 	<argument-resolvers>
          <beans:bean class="org.springframework.data.web.PageableHandlerMethodArgumentResolver">
-          <beans:property name="maxPageSize" value="3"></beans:property>
+          <beans:property name="maxPageSize" value="5"></beans:property>
           <beans:property name="oneIndexedParameters" value="true"></beans:property>
             <beans:property name="pageParameterName" value="page.page"></beans:property>
             <beans:property name="sizeParameterName" value="page.size"></beans:property>

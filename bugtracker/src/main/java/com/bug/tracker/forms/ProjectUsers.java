@@ -1,6 +1,5 @@
 package com.bug.tracker.forms;
 
-import java.util.List;
 
 public class ProjectUsers {
 	private int projectId;
@@ -12,9 +11,12 @@ public class ProjectUsers {
 	private int page;
 	private int size;
 	
-	
-	private List<Integer> users;
-	
+	private boolean updated;
+	private String message;
+	private boolean removeUser;
+	private boolean addUser;
+	private int userid;
+
 	public int getProjectId() {
 		return projectId;
 	}
@@ -26,12 +28,6 @@ public class ProjectUsers {
 	}
 	public void setProjectName(String projectName) {
 		this.projectName = projectName;
-	}
-	public List<Integer> getUsers() {
-		return users;
-	}
-	public void setUsers(List<Integer> users) {
-		this.users = users;
 	}
 	public String getUsername() {
 		return username;
@@ -63,5 +59,37 @@ public class ProjectUsers {
 	public void setSize(int size) {
 		this.size = size;
 	}
+	public boolean isUpdated() {
+		return updated;
+	}
+	public void setUpdated(boolean updated) {
+		this.updated = updated;
+	}
+	public String getMessage() {
+		return message;
+	}
+	public void setMessage(String message) {
+		this.message = message;
+	}
+	public boolean isRemoveUser() {
+		return removeUser;
+	}
+	public void setRemoveUser(boolean removeUser) {
+		this.removeUser = removeUser;
+	}
+	public boolean isAddUser() {
+		return addUser;
+	}
+	public void setAddUser(boolean addUser) {
+		this.addUser = addUser;
+	}
+	public int getUserid() {
+		return userid;
+	}
+	public void setUserid(int userid) {
+		this.userid = userid;
+	}
+	
+	
 	
 }

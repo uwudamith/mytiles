@@ -4,8 +4,10 @@ import java.util.List;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.repository.query.Param;
 
 import com.bug.tracker.entity.Project;
+import com.bug.tracker.entity.User;
 
 public interface ProjectService {
 	Project findByName(String name);
@@ -14,4 +16,6 @@ public interface ProjectService {
 	Page<Project> findByNameOrderByIdDesc(Pageable pageable);
 	Project findOne(int id);
 	void delete(int id);
+	User findUser(int projectId,int userid);
+	void deleteAssignedUser(int projectid, int userid);
 }

@@ -41,20 +41,6 @@
 						<div class="panel-body">
 							<div class="row">
 							<div class="col-lg-12">
-										<div class="form-group">
-											<div class="col-sm-4">
-											</div>
-											<div class="col-sm-4">
-												
-											</div>
-											<div class="col-sm-4">
-												<input type="submit" class="btn btn-success pull-right" />
-											</div>
-										</div>
-									</div>
-							</div>
-							<div class="row">
-							<div class="col-lg-12">
 								<table class="table table-condensed table-hover"
 									id="all-projects">
 									<thead>
@@ -70,7 +56,7 @@
 									<tfoot>
 										<tr>
 											<td colspan="6">
-												<!-- Pagination Bar --> <pagination:pagination
+												<!-- Pagination Bar --> <pagination:pagination actionClass=""
 													page="${page}" />
 											</td>
 										</tr>
